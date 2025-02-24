@@ -16,7 +16,7 @@ This project demonstrates how to hook a GPT directly into your LinkedIn account.
 
 - **ChatGPT Access:** Ensure you have access to ChatGPT’s [Explore GPTs](https://chat.openai.com/chat) feature.
 - **LinkedIn Developer Account:** Sign up or log in at [LinkedIn Developers](https://www.linkedin.com/developers/).
-- **Company Account:** You may need a company account on LinkedIn for API access.
+- **Company Account:** You will need a company account on LinkedIn for API access.
 - **Postman:** [Sign up](https://www.postman.com/) for a free account to obtain your URN.
 - **Basic OAuth Knowledge:** Familiarity with OAuth flows will help.
 
