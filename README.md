@@ -1,4 +1,4 @@
-# PostGPT: GPT-to-LinkedIn Integration
+# LinkedinGPT: GPT-to-LinkedIn Integration
 
 > **Warning:** This integration is not for the faint of heart. It involves advanced configuration, OAuth setup with LinkedIn, and manually obtaining your LinkedIn URN via Postman. Expect some bumps along the way. For support, join our [Discord](https://discord.gg/z5DgD5ZHNJ) .
 
