@@ -48,6 +48,9 @@ This project demonstrates how to hook a GPT directly into your LinkedIn account.
    - Generate your OAuth credentials:
      - Copy the **Client ID** and **Client Secret**.
      - Note the **Auth URL**, **Access Token URL**, and **Scopes** required (these will be provided in your app’s documentation and should be added to your GPT configuration).
+       - Auth URL: `https://www.linkedin.com/oauth/v2/authorization`
+       - Token URL: `https://www.linkedin.com/oauth/v2/accessToken`
+       - Scopes: `openid profile w_member_social email`
 
 ### 3. Configure GPT Authentication
 
@@ -71,17 +74,18 @@ This project demonstrates how to hook a GPT directly into your LinkedIn account.
    - Choose **OAuth 2.0**.
    - Click **Configure New Token** and fill in the following details:
      - **Token Name:** e.g., `LinkedIn`
-     - **Callback URL:** *[Copy this from your GPT’s configuration – see Step 6 below]*
-     - **Auth URL:** (as provided by your LinkedIn app)
-     - **Access Token URL:** (as provided by your LinkedIn app)
+     - **Callback URL:** Write this down for the next step.
+     - **Auth URL:** https://www.linkedin.com/oauth/v2/authorization)
+     - **Access Token URL:** https://www.linkedin.com/oauth/v2/accessToken
      - **Client ID:** (from LinkedIn Developer Console)
      - **Client Secret:** (from LinkedIn Developer Console)
-     - **Scopes:** (as required by your integration)
-     - **State:** Any random string.
+     - **Scopes:** openid profile w_member_social email
+     - **State:** random.
    - **Important:** Ensure the option to send credentials in the **body** is enabled.
-4. Click **Get New Token** and complete the login and authorization process.
-5. Once the token is received, click **Use Token**.
-6. Send the request and look for the `sub` field in the response. This string (typically around 9 alphanumeric characters) is your LinkedIn URN.
+4. Head back to the developer console, and under the `Auth` tab, look for the OAuth url call back setting and add the **Callback URL** from postman (probably `https://oauth.pstmn.io/v1/browser-callback`).
+5. Click **Get New Token** and complete the login and authorization process.
+6. Once the token is received, click **Use Token**.
+7. Send the request and look for the `sub` field in the response. This string (typically around 9 alphanumeric characters) is your LinkedIn URN.
 
 ### 5. Configure the Schema in GPT
 
@@ -193,13 +197,12 @@ components:
    ```
    
 3. Replace the placeholder `[insert URN here (no brackets)]` with the URN value obtained via Postman for example `default: urn:li:ugcPost:abc123xyz`. (Note: There are two spots in the schema that need this update.)
-4. Save your changes.
 
 ### 6. Finalize Callback URL Configuration
 
-1. In your GPT configuration, locate the **Callback URL**.
+1. In your GPT configuration (the main configuration page where you insert the prompt, and choose the tools), locate the **Callback URL**.
 2. Copy this URL and return to your LinkedIn Developer Console.
-3. In your app’s settings, add the GPT Callback URL to the authorized redirect URLs.
+3. In your app’s `Auth` settings tab, add the GPT Callback URL to the authorized redirect URLs like you did for the postman request.
 4. Save the changes.
 
 ### 7. Test Your Integration
